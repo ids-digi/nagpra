@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Title (pulls from metadata.json) -->
-    <title> Hello</title>
+    <title></title>
 
     <!-- favicon -->
     <link rel="SHORTCUT ICON"
@@ -99,20 +100,14 @@
             </ul>
         </nav>
 
-        <!-- Headline, subhed -->
-        <!-- feel free to change this up — you don't need it to have data scroll speed, 
-        doesn't have to be centered, doesn't have to be 2 lines, etc. (see header options in css directions for more inspo) -->
-        <div class="headline-container">
-            <h1 data-scroll-speed="2">‘They don’t want to not work’</h1>
-            <h2 data-scroll-speed="3">IU graduate workers begin picketing for union recognition</h2>
-        </div>
-
     </header>
 
     <!-- main article -->
     <main>
-        <p class="caption header-caption">Caption</p>
         <article>
+            <div id="bubble-map"></div>
+            <h1>Why does IU have 4,838 Native American remains? </h1>
+            <!-- <h2>IU graduate workers begin picketing for union recognition</h2> -->
             <div class="bylines">
                 <div id="bylines">
                     <!-- update bylines in metadata.json -->
@@ -120,6 +115,10 @@
                 <!-- TO DO update pub_date in metadata.json -->
                 <p id="pubdate"></p>
             </div>
+            <div class="story">
+
+            </div>
+            <table id="inventory-table"></table>
             <div class="story">
 
                 <!--
@@ -186,7 +185,12 @@
 
     <!-- Jquery cdn — used to set data scroll speed (set in ids.js file) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/ads.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="js/population.js"></script>
+    <script src="js/albersusa.js"></script>
+    <script src="files/inventory-reports.csv"></script>
+    <script src="js/d3.js"></script>
     <script src="js/ids.js"></script>
     <script src="js/metadata.js"></script>
 </body>
