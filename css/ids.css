@@ -140,7 +140,8 @@ body {
 h1,
 h2 {
     text-align: center;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 80%;
     color: white;
     font-weight: 800;
@@ -224,17 +225,17 @@ p.credit {
 /* 
     HEADER
 */
-header {
+/* header {
     background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
-}
+} */
 
-.headline-container {
+/* .headline-container {
     top: 45%;
     position: absolute;
-}
+} */
 
 .header-caption {
     padding-left: var(--sm);
@@ -245,6 +246,7 @@ header {
 /* navbar */
 nav {
     color: white;
+    background-color: black;
     position: fixed;
     width: 100%;
     z-index: 200;
@@ -347,7 +349,7 @@ nav ul div {
     ARTICLE ALIGNMENT (flexbox added in larger view widths)
 */
 article {
-    padding-top: var(--xl);
+    padding-top: 72px;
 }
 
 section p:first-child {
