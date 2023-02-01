@@ -13,15 +13,7 @@
   --darkgray: rgb(80, 80, 80);
 }
 
-header {
-  /* add header image below */
-  /* can use a file path before the photo is uploaded to ceo */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0)), url('https://s3.amazonaws.com/snwceomedia/ids/2117955e-1b4c-4014-8535-e35429063a48.sized-1000x1000.JPG');
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* adjusts image placement, can also be set as percentages (ex. 50% 50%) */
-  background-position: center center;
-}
+header {}
 
 /* 
   SET ANY MORE STYLES YOU WANT BELOW
@@ -31,40 +23,80 @@ header {
 /* 
 TYPOGRAPHY
 */
-h1 {
-  /* top headline */
-
-}
-
-h2 {
-  /* second headline */
-
-}
 
 h1,
 h2 {
   /* alignment */
   text-align: center;
   /* width of text */
-  max-width: var(--width-lg);
+  /* max-width: var(--width-lg); */
   /* text color */
-  color: white;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  color: black;
+  /* text-shadow: 0 0 15px rgba(0, 0, 0, 0.7); */
 }
 
-.headline-container {
-  /* top: auto;
-  bottom: 15vh; */
+h1 {
+  /* top headline */
+  margin-top: 2.0;
 }
 
-h3 {
-  /* section header */
-
+h2 {
+  /* second headline */
+  margin-bottom: .75em;
 }
 
-.dropcap:first-letter {
-  /* change the font/style of the dropcap if you wish to use them */
+#bubble-map {
+  /* max-width: 350px; */
+  max-width: 800px;
+  margin: 0 auto;
+}
 
+#inventory-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  max-width: var(--width-lg);
+  padding: 0 var(--sm);
+  display: block;
+  margin: 0 auto;
+  font-family: Inter, sans-serif;
+  max-height: 500px;
+  overflow: scroll;
+  position: relative;
+  color: rgb(80, 80, 80);
+  font-weight: 500;
+}
+
+#inventory-table thead {
+  background-color: lightgray;
+  position: sticky;
+  top: 0;
+}
+
+#inventory-table a:link,
+#inventory-table a:visited {
+  color: rgb(80, 80, 80);
+  border-bottom-color: rgb(80, 80, 80);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#inventory-table tbody {
+  font-size: 0.9em;
+}
+
+#inventory-table td,
+#inventory-table th {
+  border: 3px solid white;
+  padding: var(--xs) var(--xs);
+  vertical-align: baseline;
+}
+
+#inventory-table td {
+  max-height: 200px;
+  overflow: scroll;
+  background-color: #f1f1f1;
+  /* white-space: nowrap; */
 }
 
 /* 
