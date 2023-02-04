@@ -45,9 +45,19 @@ h2 {
   margin-bottom: .75em;
 }
 
+.graphic-footnote {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
 #bubble-map {
-  /* max-width: 350px; */
-  max-width: 800px;
+  width: 100%;
+  max-width: 1200px;
+  /* width: 00px; */
+  padding: 0 var(--sm);
   margin: 0 auto;
 }
 
@@ -64,6 +74,7 @@ h2 {
   position: relative;
   color: rgb(80, 80, 80);
   font-weight: 500;
+  margin-top: var(--xl);
 }
 
 #inventory-table thead {
@@ -98,6 +109,84 @@ h2 {
   background-color: #f1f1f1;
   /* white-space: nowrap; */
 }
+
+.bubble {
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: .25px;
+  /* fill: #eff3ff;
+  fill: #bdd7e7; */
+  fill: #084594
+    /* #eff3ff #bdd7e7 #6baed6 #3182bd #08519c */
+}
+
+.state,
+.state:hover,
+.bubble circle,
+.bubble circle:hover {
+  transition: .3s all;
+  cursor: pointer;
+}
+
+.state:hover {
+  stroke-width: 3px;
+  stroke: white;
+  transition: .3s all;
+}
+
+.bubble circle:hover {
+  /* opacity: 1; */
+  stroke-width: 2px;
+  stroke: white;
+}
+
+.legend circle {
+  fill: none;
+  stroke: #ccc;
+}
+
+.legend text {
+  fill: #777;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.tooltip {
+  z-index: 100;
+  color: black;
+  background-color: rgba(255, 255, 255, .8);
+  padding: var(--xs) var(--sm);
+  border-radius: 5px;
+  max-width: 250px;
+  box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, .1);
+}
+
+.tooltip p {
+  margin: 0;
+  font-family: Inter;
+  font-size: 15px;
+}
+
+
+
+/* svg path {
+  fill: none;
+  stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+} */
+
+.land {
+  fill: #ddd;
+}
+
+.border {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 
 /* 
 media queries helper
