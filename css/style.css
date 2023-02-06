@@ -11,6 +11,7 @@
   /* --mycolor: #your color here; */
   --idsred: #990000;
   --darkgray: rgb(80, 80, 80);
+  --lightgray: rgb(230, 230, 230);
 }
 
 header {}
@@ -45,12 +46,72 @@ h2 {
   margin-bottom: .75em;
 }
 
+h4 {
+  /* graphic hed */
+  font-size: 22px;
+  line-height: 1.3em;
+  font-weight: 800;
+  margin-bottom: 0.5em;
+}
+
+h5 {
+  /* graphic subhed */
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 0;
+  line-height: 1.3em;
+}
+
 .graphic-footnote {
   font-family: Inter, sans-serif;
   font-size: 14px;
   line-height: 1.2em;
   margin-top: 0;
   margin-bottom: 0.5em;
+}
+
+.definition-card {
+  background-color: var(--lightgray);
+  border-radius: 15px;
+  padding: var(--sm) var(--md);
+  /* max-width: 80%; */
+}
+
+.definition-card p {
+  font-family: Inter, sans-serif;
+  margin: 0;
+}
+
+p.word {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+p.definition {
+  font-size: 16px;
+  margin: 0.5em 0;
+}
+
+#strip-chart {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+#strip-chart .tick text {
+  font-family: Inter;
+  font-size: 8px;
+}
+
+.strip-box,
+.strip-box:hover {
+  transition: stroke 1s ease-in-out;
+}
+
+.iu-strip {
+  stroke: #990000 !important;
+  fill: #990000 !important;
+  opacity: 1 !important;
 }
 
 #bubble-map {
@@ -154,17 +215,45 @@ h2 {
 .tooltip {
   z-index: 100;
   color: black;
-  background-color: rgba(255, 255, 255, .8);
+  background-color: rgba(255, 255, 255, .9);
   padding: var(--xs) var(--sm);
   border-radius: 5px;
   max-width: 250px;
   box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, .1);
+  pointer-events: none;
 }
 
 .tooltip p {
   margin: 0;
   font-family: Inter;
   font-size: 15px;
+  line-height: 1.3em;
+}
+
+#beeswarm {
+  margin-bottom: var(--lg);
+}
+
+.beeswarm-circle {
+  /* box-shadow: 1px 1px 1px red; */
+  cursor: pointer;
+}
+
+.legendCells .label {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+}
+
+#beeswarm .legendTitle {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#bubble-map .legendTitle {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 
