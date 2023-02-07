@@ -127,8 +127,10 @@
                     culpa qui officia deserunt mollit anim id est laborum.</p>
                 <figure>
                     <h4>IU has the fifth-largest collection of unrepatriated ancestral remains in the U.S.</h4>
-                    <h5>Federally funded institutions must report inventories of Native American remains under
+                    <h5 style="margin-bottom: calc(0.5em + 60px);">Federally funded institutions must report
+                        inventories of Native American remains under
                         NAGPRA.</h5>
+                    <div class="container"></div>
                     <div id="beeswarm"></div>
                     <p class="graphic-footnote" style="text-align: right;margin-top:-38px;"><strong>Source:</strong> <a
                             href="https://grantsdev.cr.nps.gov/NagpraPublic/Home/Inventory" target="_blank">NAGPRA
@@ -165,7 +167,10 @@
                     ut sem nulla pharetra diam sit amet nisl suscipit. </p>
                 <h3>Where did the remains come from?</h3>
             </div>
-            <div id="bubble-map"></div>
+            <figure class="xl-image">
+                <div class="map-legend"></div>
+                <div id="bubble-map"></div>
+            </figure>
             <div class="story">
                 <p class="graphic-footnote"><strong>Note:</strong> County totals are subsets of state totals. Not all
                     data points have
@@ -277,8 +282,8 @@
     <script src="js/albersusa.js"></script>
     <script src="js/colorLegend.js"></script>
     <script src="js/stripPlot.js"></script>
-    <script src="js/bubbleMap.js"></script>
-    <script src="js/beeSwarm.js"></script>
+    <script type="module" src="js/bubbleMap.js"></script>
+    <script type="module" src="js/beeSwarm.js"></script>
     <script src="js/ids.js"></script>
     <script src="js/metadata.js"></script>
 </body>
