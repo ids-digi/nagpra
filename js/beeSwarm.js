@@ -1,6 +1,9 @@
 /*
     BEESWARM PLOT
 */
+// Import Observable runtime and the @d3/color-legend notebook
+import { Runtime } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import d3_colorLegend from "https://api.observablehq.com/@d3/color-legend.js?v=3";
 
 const drawBeeswarm = (data) => {
     // convert strings to integers, remove zeroes
@@ -28,6 +31,43 @@ const drawBeeswarm = (data) => {
         .attr("preserveAspectRatio", "xMidYMid")
         .attr("viewBox", "0 0 " + width + " " + (height + margin.top + margin.bottom));
 
+    const arrowSize = 7
+    const arrowPoints = [[0, 0], [0, arrowSize], [arrowSize, arrowSize / 2]];
+
+    svg
+        .append('defs')
+        .append('marker')
+        .attr('id', 'arrow')
+        .attr('viewBox', [0, 0, arrowSize, arrowSize])
+        .attr('refX', (arrowSize / 2))
+        .attr('refY', (arrowSize / 2))
+        .attr('markerWidth', arrowSize)
+        .attr('markerHeight', arrowSize)
+        .attr('orient', 'auto-start-reverse')
+        .append('path')
+        .attr('d', d3.line()(arrowPoints))
+        .attr('stroke', 'currentColor');
+
+    svg
+        .append('path')
+        .attr('d', d3.line()([[(width / 2 - 50), 330], [(width / 2 + 50), 330]]))
+        .attr('stroke', 'var(--darkgray)')
+        .attr('marker-start', 'url(#arrow)')
+        .attr('marker-end', 'url(#arrow)')
+        .attr('fill', 'none')
+    svg.append('text')
+        .text('Fewer remains')
+        .attr('class', 'arrow-label')
+        .attr('dx', width / 2 - 60)
+        .attr('dy', 334)
+        .attr('text-anchor', 'end')
+    svg.append('text')
+        .text('More remains')
+        .attr('class', 'arrow-label')
+        .attr('dx', width / 2 + 60)
+        .attr('dy', 334)
+        .attr('text-anchor', 'start')
+
     // establish x scale
     var xScale = d3.scaleLinear()
         .domain([0, 10000])
@@ -43,6 +83,12 @@ const drawBeeswarm = (data) => {
     var circles = svg.selectAll(".beeCircle")
         .data(data, (d) => d.MNI);//join the data
 
+    // color scale
+    const colorScale = d3.scaleThreshold()
+        .domain([10, 100, 1000])
+        // .domain(d3.quantile)
+        .range(d3.schemeBlues[4])
+
     circles.exit()//this is the exit selection
         .attr("cx", 0)
         .attr("cy", (height / 2))
@@ -54,19 +100,7 @@ const drawBeeswarm = (data) => {
         .attr("cx", 0)
         .attr("cy", (height / 2))
         .attr("r", 5)
-        .style('fill', (d) => {
-            if (d.MNI > 0 && d.MNI <= 10) {
-                return 'rgb(235, 241, 253)'
-            } else if (d.MNI > 10 && d.MNI <= 100) {
-                return 'rgb(211, 227, 242)'
-            } else if (d.MNI >= 100 && d.MNI < 1000) {
-                return 'rgb(88, 159, 206)'
-            } else if (d.MNI >= 1000 && d.MNI < 10000) {
-                return 'rgb(49, 130, 189)'
-            } else {
-                return '#d3d3d3'
-            }
-        })
+        .style('fill', d => colorScale(d.MNI))
         .merge(circles)//and the "merge" unify enter and update selections!
         .attr("cx", (d) => d.x)
         .attr("cy", (d) => d.y);
@@ -129,37 +163,26 @@ const drawBeeswarm = (data) => {
         .attr("class", "legendOrdinal")
         .attr("transform", "translate(20,20)");
 
-    var categories = ["1-10", "11-100", "101-1,000", "1,001-10,000"];
+    async function renderLegend(el) {
+        // Get the value of the "legend" notebook cell, which is the function we want, which returns a DOM element
+        const module = new Runtime().module(d3_colorLegend);
+        const Legend = await module.value("Legend");
 
-    var ordinal = d3.scaleOrdinal()
-        .domain(categories)
-        // .range(categories.map((val, i) =>
-        //     d3.interpolateBlues(i / (categories.length - 1))
-        // ));
-        .range(['rgb(235, 241, 253)', 'rgb(211, 227, 242)', 'rgb(88, 159, 206)', 'rgb(49, 130, 189)'])
+        // Finally, call `legend` with our options and append it to the container
+        const element = Legend((colorScale), {
+            title: "Unrepatriated remains reported by institutions",
+            height: 50,
+            width: 250,
+            tickSize: 0,
+            tickFormat: d3.format(',')
+        });
+        el.appendChild(element);
 
-
-    svg.append("g")
-        .attr("class", "legendLinear")
-        .attr("transform", `translate(${width / 2 - 70},${margin.top + 25})`)
-        .attr("right: 0")
-
-    var legendLinear = d3.legendColor()
-        .shapeWidth(70)
-        .orient('horizontal')
-        .scale(ordinal)
-        .labelAlign('center')
-        .labelWrap(10)
-        .title("Number of federally reported ancestral remains not yet available for repatriation")
-        .titleWidth(300)
-
-    svg.select(".legendLinear")
-        .call(legendLinear);
+    }
+    renderLegend(document.querySelector('.container'))
 
     d3.selectAll(".beeswarm-circle")
         .on("mouseover", (d, i) => {
-            // d3.selectAll('.beeswarm-circle').attr('opacity', .3)
-            // d3.select(d.srcElement).attr('opacity', 1)
             tooltip.html(`<p><strong>${i.Institution}</strong> reported ancestral remains of at least <strong>${d3.format(",")(i.MNI)}</strong> individual${i.MNI == 1 ? '' : 's'}</p>`)
                 .style('top', d.pageY - 12 + 'px')
                 .style('left', d.pageX + 25 + 'px')
@@ -174,10 +197,9 @@ const drawBeeswarm = (data) => {
                 .style("opacity", 1);
 
         }).on("mouseout", function (d) {
-            // d3.selectAll('.beeswarm-circle').attr('opacity', 1)
             tooltip.style("opacity", 0);
-            // xline.attr("opacity", 0);
         });
+
 }
 
 const asyncBeeswarm = async () => {
