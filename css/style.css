@@ -116,7 +116,7 @@ p.definition {
 
 #bubble-map {
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   /* width: 00px; */
   padding: 0 var(--sm);
   margin: 0 auto;
@@ -254,6 +254,43 @@ p.definition {
   font-family: Inter, sans-serif;
   font-size: 12px;
   font-weight: bold;
+}
+
+.container svg,
+.map-legend svg {
+  margin-left: auto;
+  margin-right: 130px;
+  margin-bottom: -100px;
+  font-family: Inter, sans-serif;
+}
+
+.map-legend svg {
+  margin-left: auto;
+  margin-right: 130px;
+  margin-bottom: -80px;
+  /* padding-top: 40px; */
+  font-family: Inter, sans-serif;
+}
+
+.arrow-label {
+  font-size: 12px;
+  font-family: Inter, sans-serif;
+  fill: var(--darkgray);
+}
+
+.container .title,
+.map-legend .title {
+  font-size: 14px;
+}
+
+.container .tick text,
+.map-legend .tick text {
+  font-size: 14px;
+}
+
+.container .tick line,
+.map-legend .tick line {
+  stroke: white;
 }
 
 
