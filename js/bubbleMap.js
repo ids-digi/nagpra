@@ -1,4 +1,5 @@
-'use strict';
+import { Runtime } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import d3_colorLegend from "https://api.observablehq.com/@d3/color-legend.js?v=3";
 
 /*
     BUBBLE MAP
@@ -26,8 +27,8 @@ const drawMap = (countyData, stateData) => {
         .domain([0, 400])
         .range([0, 25])
 
-    const colorScale = d3.scaleLinear()
-        .domain([0, 50, 100, 3380])
+    const colorScale = d3.scaleThreshold()
+        .domain([10, 100, 1000])
         // .domain(d3.quantile)
         .range(d3.schemeBlues[4])
 
@@ -41,23 +42,23 @@ const drawMap = (countyData, stateData) => {
     //     // ));
     //     .range(['rgb(235, 241, 253)', 'rgb(211, 227, 242)', 'rgb(88, 159, 206)', 'rgb(49, 130, 189)'])
 
+    async function renderLegend(el) {
+        // Get the value of the "legend" notebook cell, which is the function we want, which returns a DOM element
+        const module = new Runtime().module(d3_colorLegend);
+        const Legend = await module.value("Legend");
 
-    svg.append("g")
-        .attr("class", "legendLinear")
-        .attr("transform", `translate(640,15)`)
+        // Finally, call `legend` with our options and append it to the container
+        const element = Legend((colorScale), {
+            title: "Unrepatriated remains IU reported",
+            height: 50,
+            width: 250,
+            tickSize: 0,
+            tickFormat: d3.format(',')
+        });
+        el.appendChild(element);
 
-    var legendLinear = d3.legendColor()
-        .shapeWidth(40)
-        .orient('horizontal')
-        .scale(colorScale)
-        .labelAlign('center')
-        .labelWrap(10)
-        .title("Number of federally reported ancestral remains not yet available for repatriation")
-        .titleWidth(250)
-        .labelFormat(d3.format(','))
-
-    svg.select(".legendLinear")
-        .call(legendLinear);
+    }
+    renderLegend(document.querySelector('.map-legend'))
 
     // tooltip
     var tooltip = d3.select("body")
@@ -126,9 +127,9 @@ const drawMap = (countyData, stateData) => {
     drawStates("nonzero", "color", "state").on("mouseover", (d, i) => {
         // console.log(d.screenY)
         // console.log(d)
-        // console.log(i)
+        console.log(i)
         tooltip.style("opacity", 1)
-            .html(`<p><strong>${i.properties.name}:</strong> IU still has remains of at least <strong>${i.properties.mni}</strong> individuals</p>`)
+            .html(`<p>IU still has remains of at least <strong>${d3.format(',')(i.properties.mni)}</strong> individual${i.properties.mni == 1 ? '' : 's'} from <strong>${i.properties.name}</strong></p>`)
             .style("visibility", 'visible')
             .style("left", (d.pageX + 10) + "px")
             .style("top", (d.pageY + 10) + "px")
@@ -162,7 +163,8 @@ const drawMap = (countyData, stateData) => {
         .attr("r", (d) => radius(d.properties.mni))
         .on("mouseover", (d, i) => {
             tooltip.style("opacity", 1)
-                .html(`<p><strong>${i.properties.name} County, ${i.properties.state}:</strong> IU still has remains of at least <strong>${d3.format(",")(+i.properties.mni)}</strong> individuals</p>`)
+                .html(`<p>IU still has remains of at least <strong>${d3.format(',')(i.properties.mni)}</strong> individual${i.properties.mni == 1 ? '' : 's'} from <strong>${i.properties.name} County, ${i.properties.state}</strong></p>`)
+                // .html(`<p><strong>${i.properties.name} County, ${i.properties.state}:</strong> IU still has remains of at least <strong>${d3.format(",")(+i.properties.mni)}</strong> individuals</p>`)
                 .style("visibility", 'visible')
                 .style("left", (d.pageX + 10) + "px")
                 .style("top", (d.pageY + 10) + "px")
