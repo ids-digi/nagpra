@@ -30,20 +30,29 @@ h2 {
   /* alignment */
   text-align: center;
   /* width of text */
-  /* max-width: var(--width-lg); */
+  max-width: var(--width-lg);
   /* text color */
   color: black;
   /* text-shadow: 0 0 15px rgba(0, 0, 0, 0.7); */
+  font-weight: 600;
 }
 
 h1 {
   /* top headline */
   margin-top: 2.0;
+  font-size: 32px;
+  line-height: 1.4em;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 h2 {
   /* second headline */
+  font-family: 'Fira Sans', Helvetica, sans-serif;
   margin-bottom: .75em;
+  font-size: 22px;
+  font-weight: 300;
+  margin-top: .5em;
 }
 
 h4 {
@@ -61,6 +70,18 @@ h5 {
   font-weight: 400;
   margin-top: 0;
   line-height: 1.3em;
+}
+
+/* dropcap */
+.section-break+p:first-letter,
+p.drop-cap:first-letter {
+  font-family: 'Source Serif Pro', 'Times New Roman', serif;
+  font-weight: 800;
+  float: left;
+  font-size: 4.0em;
+  line-height: 0.65;
+  margin: 0.08em 0.07em 0 0;
+  color: var(--darkgray);
 }
 
 .graphic-footnote {
@@ -108,9 +129,11 @@ p.definition {
   transition: stroke 1s ease-in-out;
 }
 
-.iu-strip {
+.iu-strip,
+.IU {
   stroke: #990000 !important;
-  fill: #990000 !important;
+  stroke-width: 2px;
+  /* fill: #990000 !important; */
   opacity: 1 !important;
 }
 
@@ -221,6 +244,7 @@ p.definition {
   max-width: 250px;
   box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, .1);
   pointer-events: none;
+  display: none;
 }
 
 .tooltip p {
@@ -311,6 +335,59 @@ p.definition {
   stroke: #fff;
   stroke-linejoin: round;
   stroke-linecap: round;
+}
+
+/* sidebar note */
+.sidebar-note-inner {
+  max-width: var(--medium);
+  margin: 2.0em auto;
+  padding: 0 var(--sm);
+}
+
+@media screen and (min-width: 1024px) {
+
+  .sidebar-note-wrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .small-spacer {
+    flex: 1 1 20%;
+  }
+
+  .sidebar-note-inner {
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+  }
+
+  .text-spacer {
+    flex: 0 0 calc(var(--medium) - 16px);
+    pointer-events: none;
+  }
+
+  .sidebar-note {
+    flex: 1 1 20%;
+  }
+}
+
+.mug img {
+  height: 80px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.mug {
+  display: flex;
+}
+
+.mug p {
+  margin: 0;
+  font-family: "Fira Sans", Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.2em;
 }
 
 
