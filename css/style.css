@@ -114,6 +114,15 @@ p.definition {
   margin: 0.5em 0;
 }
 
+.definition-card p.source {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  /* font-weight: bold; */
+  /* text-align: right; */
+  color: var(--darkgray);
+  margin: 0;
+}
+
 #strip-chart {
   max-width: 950px;
   margin: 0 auto;
@@ -244,7 +253,9 @@ p.definition {
   max-width: 250px;
   box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, .1);
   pointer-events: none;
-  display: none;
+  /* height: 0;
+  width: 0; */
+  /* display: none; */
 }
 
 .tooltip p {
