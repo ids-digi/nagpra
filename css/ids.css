@@ -381,7 +381,7 @@ section p:first-child {
 
 #pubdate {
     font-size: 0.85em;
-    margin-bottom: var(--md);
+    margin-bottom: var(--xs);
     margin-top: var(--xs);
 }
 

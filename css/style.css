@@ -80,6 +80,7 @@ h5 {
   padding-bottom: var(--md);
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--lg);
 }
 
 .imagegrid {
@@ -96,17 +97,36 @@ h5 {
 .topper .imagegrid .topper-img-1 {
   grid-row: 1 /8;
   grid-column: 1 /6;
+  animation: fade-in 1s forwards;
 }
 
 .topper .imagegrid .topper-img-2 {
   grid-row: 4/12;
   grid-column: 5/10;
+  opacity: 0;
   /* border: 1px solid pink; */
+  animation: fade-in 1s forwards 1s;
 }
 
 .topper .imagegrid .topper-img-3 {
   grid-row: 1/8;
   grid-column: 9/14;
+  opacity: 0;
+  animation: fade-in 1s forwards 2s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+p.topper-caption {
+  margin-bottom: var(--lg);
 }
 
 @media screen and (max-width: 768px) {
