@@ -5,9 +5,8 @@ import d3_colorLegend from "https://api.observablehq.com/@d3/color-legend.js?v=3
     BUBBLE MAP
 */
 
-const us = albers
-
-const drawMap = (countyData, stateData) => {
+const drawMap = (countyData, stateData, us) => {
+    console.log(us)
 
     // var statemap = new Map(topojson.feature(us.objects.states).features.map(d => [d.id, d]))
 
@@ -61,7 +60,7 @@ const drawMap = (countyData, stateData) => {
     renderLegend(document.querySelector('.map-legend'))
 
     // tooltip
-    var tooltip = d3.select("body")
+    var tooltip = d3.select("main")
         .append("div")
         .style("position", "absolute")
         .attr('class', 'tooltip')
@@ -129,7 +128,7 @@ const drawMap = (countyData, stateData) => {
         // console.log(d)
         console.log(i)
         tooltip.style("opacity", 1)
-            .html(`<p>IU still has remains of at least <strong>${d3.format(',')(i.properties.mni)}</strong> individual${i.properties.mni == 1 ? '' : 's'} from <strong>${i.properties.name}</strong></p>`)
+            .html(`<p>IU reported remains of at least <strong>${d3.format(',')(i.properties.mni)}</strong> individual${i.properties.mni == 1 ? '' : 's'} from <strong>${i.properties.name}</strong></p>`)
             .style("visibility", 'visible')
             .style("left", (d.pageX + 10) + "px")
             .style("top", (d.pageY + 10) + "px")
@@ -163,7 +162,7 @@ const drawMap = (countyData, stateData) => {
         .attr("r", (d) => radius(d.properties.mni))
         .on("mouseover", (d, i) => {
             tooltip.style("opacity", 1)
-                .html(`<p>IU still has remains of at least <strong>${d3.format(',')(i.properties.mni)}</strong> individual${i.properties.mni == 1 ? '' : 's'} from <strong>${i.properties.name} County, ${i.properties.state}</strong></p>`)
+                .html(`<p>IU reported remains of at least <strong>${d3.format(',')(i.properties.mni)}</strong> individual${i.properties.mni == 1 ? '' : 's'} from <strong>${i.properties.name} County, ${i.properties.state}</strong></p>`)
                 // .html(`<p><strong>${i.properties.name} County, ${i.properties.state}:</strong> IU still has remains of at least <strong>${d3.format(",")(+i.properties.mni)}</strong> individuals</p>`)
                 .style("visibility", 'visible')
                 .style("left", (d.pageX + 10) + "px")
@@ -202,7 +201,10 @@ const asyncCounties = async () => {
 const asyncStates = async () => {
     return d3.csv('./files/state_df.csv')
 }
+const asyncAlbers = async () => {
+    return d3.json('./files/albers.json')
+}
     // once promises return, run the map drawing function
     ; (async () => {
-        drawMap(await asyncCounties(), await asyncStates())
+        drawMap(await asyncCounties(), await asyncStates(), await asyncAlbers())
     })()

@@ -14,7 +14,7 @@ const drawBeeswarm = (data) => {
     }).filter((d) => d.MNI > 0)
 
     // create tooltip for later
-    var tooltip = d3.select("body")
+    var tooltip = d3.select("main")
         .append("div")
         .style("position", "absolute")
         .attr('class', 'tooltip')
@@ -50,22 +50,22 @@ const drawBeeswarm = (data) => {
 
     svg
         .append('path')
-        .attr('d', d3.line()([[(width / 2 - 50), 330], [(width / 2 + 50), 330]]))
+        .attr('d', d3.line()([[(width / 2 + 15 - 50), 300], [(width / 2 + 15 + 50), 300]]))
         .attr('stroke', 'var(--darkgray)')
         .attr('marker-start', 'url(#arrow)')
         .attr('marker-end', 'url(#arrow)')
         .attr('fill', 'none')
     svg.append('text')
-        .text('Fewer remains')
+        .text('Fewer reported remains')
         .attr('class', 'arrow-label')
-        .attr('dx', width / 2 - 60)
-        .attr('dy', 334)
+        .attr('dx', width / 2 - 60 + 15)
+        .attr('dy', 304)
         .attr('text-anchor', 'end')
     svg.append('text')
-        .text('More remains')
+        .text('More reported remains')
         .attr('class', 'arrow-label')
-        .attr('dx', width / 2 + 60)
-        .attr('dy', 334)
+        .attr('dx', width / 2 + 60 + 15)
+        .attr('dy', 304)
         .attr('text-anchor', 'start')
 
     // establish x scale
@@ -128,40 +128,40 @@ const drawBeeswarm = (data) => {
         .attr('text-anchor', 'middle')
         .text("IU: 4,838");
 
-    for (let n of [2589, 9336]) {
-        svg.append("line")
-            .attr("stroke", "var(--darkgray")
-            .attr("x1", xScale(n) + (n == 9336 ? 10 : 0) + (n == 1 ? -60 : 0))
-            .attr("x2", xScale(n) + (n == 9336 ? 10 : 0) + (n == 1 ? -60 : 0))
-            .attr("y1", height / 2 + 35)
-            .attr("y2", height / 2 + 20)
-    }
+    // for (let n of [2589, 9336]) {
+    //     svg.append("line")
+    //         .attr("stroke", "var(--darkgray")
+    //         .attr("x1", xScale(n) + (n == 9336 ? 10 : 0) + (n == 1 ? -60 : 0))
+    //         .attr("x2", xScale(n) + (n == 9336 ? 10 : 0) + (n == 1 ? -60 : 0))
+    //         .attr("y1", height / 2 + 35)
+    //         .attr("y2", height / 2 + 20)
+    // }
 
-    const pairs = [[2589, 9336]]
+    // const pairs = [[2589, 9336]]
 
-    for (let i in pairs) {
-        console.log(xScale(pairs[i][0] + pairs[i][1]) + (i == 0 ? -60 : 10))
-        svg.append("text")
-            .attr("dx", (xScale(pairs[i][0]) + xScale(pairs[i][1]) + (i == 1 ? -60 : 10)) / 2)
-            .attr("dy", height / 2 + 60)
-            .attr('text-anchor', 'middle')
-            .style('font-family', 'Inter')
-            .style('font-size', 14)
-            .text("10 institutions own 49.4% of all reported remains")
-    }
+    // for (let i in pairs) {
+    //     console.log(xScale(pairs[i][0] + pairs[i][1]) + (i == 0 ? -60 : 10))
+    //     svg.append("text")
+    //         .attr("dx", (xScale(pairs[i][0]) + xScale(pairs[i][1]) + (i == 1 ? -60 : 10)) / 2)
+    //         .attr("dy", height / 2 + 60)
+    //         .attr('text-anchor', 'middle')
+    //         .style('font-family', 'Inter')
+    //         .style('font-size', 14)
+    //         .text("10 institutions own 49.4% of all reported remains")
+    // }
 
-    var top50 = svg.append("line")
-        .attr("stroke", "var(--darkgray)")
+    // var top50 = svg.append("line")
+    //     .attr("stroke", "var(--darkgray)")
 
-    top50.attr("x1", xScale(2589))
-        .attr("x2", xScale(9336) + 10)
-        .attr('y1', height / 2 + 35)
-        .attr('y2', height / 2 + 35)
-        .attr("opacity", 1);
+    // top50.attr("x1", xScale(2589))
+    //     .attr("x2", xScale(9336) + 10)
+    //     .attr('y1', height / 2 + 35)
+    //     .attr('y2', height / 2 + 35)
+    //     .attr("opacity", 1);
 
-    svg.append("g")
-        .attr("class", "legendOrdinal")
-        .attr("transform", "translate(20,20)");
+    // svg.append("g")
+    //     .attr("class", "legendOrdinal")
+    //     .attr("transform", "translate(20,20)");
 
     async function renderLegend(el) {
         // Get the value of the "legend" notebook cell, which is the function we want, which returns a DOM element
