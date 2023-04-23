@@ -9,14 +9,16 @@ const data = {
             "name": "Carson TerBush",
             "email": "cterbush@iu.edu",
             "twitter": "_carsonology",
-            "pfp": "https://pbs.twimg.com/profile_images/1477852735278129152/vk-AiTE6_400x400.jpg",
+            "pfp": "https://s3.amazonaws.com/snwceomedia/ids/a6399d19-bcc4-4ea1-b009-c2576eaf6c76.original.jpg",
             "bio": "Carson has worked at the IDS since 2019 as a reporter and designer."
-        },
+        }, "Faculty photos courtesy of IU": {
+            "name": ""
+        }
     }
 }
 
 // bylines
-const byline_types = ["Story, graphics, design and development by"]
+const byline_types = ["Story, graphics, design and development by", "Faculty photos courtesy of IU"]
 let bylines_html = '';
 let bios_html = '';
 
