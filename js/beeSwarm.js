@@ -203,7 +203,8 @@ const drawBeeswarm = (data) => {
 }
 
 const asyncBeeswarm = async () => {
-    return d3.csv('./files/strip_chart_data.csv')
+    // return d3.csv('./files/strip_chart_data.csv')
+    return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/strip_chart_data.csv?token=GHSAT0AAAAAACASYJVXAGBTMFEQN5N3R6OUZCF54VQ')
 }
     // once promises return, run the map drawing function
     ; (async () => {
