@@ -6,6 +6,7 @@ import d3_colorLegend from "https://api.observablehq.com/@d3/color-legend.js?v=3
 */
 
 const drawMap = (countyData, stateData, us) => {
+    console.log(us)
 
     // var statemap = new Map(topojson.feature(us.objects.states).features.map(d => [d.id, d]))
 
@@ -195,13 +196,13 @@ const drawMap = (countyData, stateData, us) => {
 
 // asynchronously fetch county + state aggregate data
 const asyncCounties = async () => {
-    return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/inventory_clean.csv?token=GHSAT0AAAAAACASYJVXNADSVYREGJJS64WSZCFXWNQ')
+    return d3.csv('./files/inventory_clean.csv')
 }
 const asyncStates = async () => {
-    return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/state_df.csv?token=GHSAT0AAAAAACASYJVW2RJGIDWIEU5KRRE6ZCFXWUQ')
+    return d3.csv('./files/state_df.csv')
 }
 const asyncAlbers = async () => {
-    return d3.json('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/albers.json?token=GHSAT0AAAAAACASYJVXPWN3YNGPEXDAS5EOZCFXVUQ')
+    return d3.json('./files/albers.json')
 }
     // once promises return, run the map drawing function
     ; (async () => {
