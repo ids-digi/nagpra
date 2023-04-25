@@ -196,16 +196,16 @@ const drawMap = (countyData, stateData, us) => {
 
 // asynchronously fetch county + state aggregate data
 const asyncCounties = async () => {
-    // return d3.csv('./files/inventory_clean.csv')
-    return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/inventory_clean.csv?token=GHSAT0AAAAAACASYJVWQ74VP3TUMYLGTSHOZCF54CQ')
+    return d3.csv('./files/inventory_clean.csv')
+    // return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/inventory_clean.csv?token=GHSAT0AAAAAACASYJVWQ74VP3TUMYLGTSHOZCF54CQ')
 }
 const asyncStates = async () => {
-    // return d3.csv('./files/state_df.csv')
-    return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/state_df.csv?token=GHSAT0AAAAAACASYJVWGGILIYOJKFQQZO5AZCF54KA')
+    return d3.csv('./files/state_df.csv')
+    // return d3.csv('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/state_df.csv?token=GHSAT0AAAAAACASYJVWGGILIYOJKFQQZO5AZCF54KA')
 }
 const asyncAlbers = async () => {
-    // return d3.json('./files/albers.json')
-    return d3.json('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/albers.json?token=GHSAT0AAAAAACASYJVXTDKEW73VHGDHLOA4ZCF53YA')
+    return d3.json('./files/albers.json')
+    // return d3.json('https://raw.githubusercontent.com/ids-digi/nagpra/main/files/albers.json?token=GHSAT0AAAAAACASYJVXTDKEW73VHGDHLOA4ZCF53YA')
 }
     // once promises return, run the map drawing function
     ; (async () => {
