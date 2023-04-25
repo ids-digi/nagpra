@@ -164,7 +164,7 @@ h2 {
 
 h1 {
     /* first headline */
-    padding: var(--xxs) 0 0.75em;
+    /* padding: var(--xxs) 0 0.75em; */
     font-size: 32px;
 }
 
@@ -487,8 +487,8 @@ figure {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     grid-gap: 15px;
-    padding-left: var(--sm);
-    padding-right: var(--sm);
+    /* padding-left: var(--sm);
+    padding-right: var(--sm); */
     margin: var(--xxl) auto var(--xl);
 }
 
@@ -532,10 +532,10 @@ figure {
     margin: 0 15px;
 }
 
-h4 {
+/* h4 {
     margin-left: 15px;
     margin-right: 15px;
-}
+} */
 
 .side-by-side {
     max-width: var(--width-lg);
