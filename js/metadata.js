@@ -1,9 +1,9 @@
 const data = {
-    "url": "your-url-here",
+    "url": "iu-nagpra-native-american-remains-repatriation",
     "slug": "NAGPRA at IU",
-    "headline": "Thousands of Native American remains, a legacy of offensive research and the effort to move forward",
+    "headline": "After 20 years avoiding repatriation and 10 dedicated to it, IU still has thousands of Indigenous human remains ",
     "title": "NAGPRA at IU",
-    "pub_date": "{insert your date in metadata.json}",
+    "pub_date": "April 28, 2023",
     "bylines": {
         "Story, graphics, design and development by": {
             "name": "Carson TerBush",
