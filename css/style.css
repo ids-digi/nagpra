@@ -59,6 +59,13 @@ h2 {
   line-height: 1.4em;
 }
 
+h3 {
+  /* subhed */
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
 h4 {
   /* graphic hed */
   font-size: 22px;
