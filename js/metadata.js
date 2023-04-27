@@ -64,7 +64,7 @@ function setAuthorBio(type, author) {
                             <img src="${author.pfp}" alt="${author.name}">
                             <div>
                             <p>${type} <a href="https://idsnews.com/staff/${author.name.split(' ').join('-')}" target="_blank">${author.name}</a></p>
-                            <p>${author.bio}  ${author.email ? email_link : ''}   ${author.twitter ? twitter_link : ''}</p>
+                            <p>${author.bio}  ${author.email ? '<br>' + email_link : ''}   ${author.twitter ? twitter_link : ''}</p>
                             </div>
                         </div>
                     </div>`;

@@ -142,7 +142,7 @@ function Legend(color, {
             .attr("fill", "currentColor")
             .attr("text-anchor", "start")
             .attr("font-weight", "bold")
-            .attr("class", "title")
+            .attr("class", "legend-title")
             .text(title));
 
     return svg.node();

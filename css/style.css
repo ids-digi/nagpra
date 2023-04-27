@@ -35,14 +35,14 @@ h2 {
   color: var(--lightgray);
   /* text-shadow: 0 0 15px rgba(0, 0, 0, 0.7); */
   font-weight: 600;
-  padding: 0 var(--sm);
+  /* padding: 0 var(--sm); */
 }
 
 h1 {
   /* top headline */
   margin-top: 0;
   /* padding-top: 2.0em; */
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.4em;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -53,7 +53,7 @@ h2 {
   /* second headline */
   font-family: 'Fira Sans', Helvetica, sans-serif;
   margin-bottom: .75em;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 300;
   margin-top: .5em;
   line-height: 1.4em;
@@ -62,13 +62,13 @@ h2 {
 h3 {
   /* subhed */
   font-family: 'Fira Sans', Helvetica, sans-serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
 }
 
 h4 {
   /* graphic hed */
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.3em;
   font-weight: 800;
   margin-bottom: 0.5em;
@@ -80,7 +80,7 @@ h4 {
 
 h5 {
   /* graphic subhed */
-  font-family: Inter, sans-serif;
+  font-family: 'Fira Sans', Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 400;
   margin-top: 0;
@@ -159,7 +159,7 @@ p.drop-cap:first-letter {
 }
 
 .graphic-footnote {
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 14px;
   line-height: 1.2em;
   margin-top: 0;
@@ -174,7 +174,7 @@ p.drop-cap:first-letter {
 }
 
 .definition-card p {
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   margin: 0;
 }
 
@@ -189,7 +189,7 @@ p.definition {
 }
 
 .definition-card p.source {
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 14px;
   /* font-weight: bold; */
   /* text-align: right; */
@@ -203,7 +203,7 @@ p.definition {
 }
 
 #strip-chart .tick text {
-  font-family: Inter;
+  font-family: "Fira Sans";
   font-size: 8px;
 }
 
@@ -235,7 +235,7 @@ p.definition {
   padding: 0 var(--sm);
   display: block;
   margin: 0 auto;
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   max-height: 500px;
   overflow: scroll;
   position: relative;
@@ -334,7 +334,7 @@ p.definition {
 
 .tooltip p {
   margin: 0;
-  font-family: Inter;
+  font-family: "Fira Sans";
   font-size: 15px;
   line-height: 1.3em;
 }
@@ -349,18 +349,18 @@ p.definition {
 }
 
 .legendCells .label {
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 12px;
 }
 
 #beeswarm .legendTitle {
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 14px;
   font-weight: bold;
 }
 
 #bubble-map .legendTitle {
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 12px;
   font-weight: bold;
 }
@@ -370,7 +370,7 @@ p.definition {
   margin-left: auto;
   margin-right: 130px;
   margin-bottom: -100px;
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .map-legend svg {
@@ -378,17 +378,19 @@ p.definition {
   margin-right: 130px;
   margin-bottom: -80px;
   /* padding-top: 40px; */
-  font-family: Inter, sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .arrow-label {
-  font-size: 12px;
-  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-family: "Fira Sans", sans-serif;
   fill: var(--darkgray);
 }
 
 .container .title,
 .map-legend .title {
+  font-family: 'Fira Sans', Helvetica, sans-serif;
+  font-weight: 400;
   font-size: 14px;
 }
 
@@ -540,10 +542,13 @@ No media query for `xs` since this is the default */
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  header {
-    /* adjust header image positioning for larger devices if needed */
-    /* you can also change the header image for mobile here */
-    /* background-position: 50% 50%; */
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 22px;
   }
 
   .helper {

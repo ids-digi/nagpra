@@ -50,7 +50,7 @@ const drawBeeswarm = (data) => {
 
     svg
         .append('path')
-        .attr('d', d3.line()([[(width / 2 + 15 - 50), 300], [(width / 2 + 15 + 50), 300]]))
+        .attr('d', d3.line()([[(width / 2 + 10 - 50 + 20), 300], [(width / 2 + 10 + 50 + 20), 300]]))
         .attr('stroke', 'var(--darkgray)')
         .attr('marker-start', 'url(#arrow)')
         .attr('marker-end', 'url(#arrow)')
@@ -58,13 +58,13 @@ const drawBeeswarm = (data) => {
     svg.append('text')
         .text('Fewer reported remains')
         .attr('class', 'arrow-label')
-        .attr('dx', width / 2 - 60 + 15)
+        .attr('dx', width / 2 - 60 + 10 + 20)
         .attr('dy', 304)
         .attr('text-anchor', 'end')
     svg.append('text')
         .text('More reported remains')
         .attr('class', 'arrow-label')
-        .attr('dx', width / 2 + 60 + 15)
+        .attr('dx', width / 2 + 60 + 10 + 20)
         .attr('dy', 304)
         .attr('text-anchor', 'start')
 
